@@ -14,11 +14,8 @@
 #define GRAIL_PP_TUPLE_AT_3(P,a,b,c,d,...) d
 
 #define P(_) _Pragma(#_)
-#define CC(___,_,__,...) ___##__
-#define C(_...) CC(_)
 #define X(x...) x
 #define E(...)
-#define R(x...) E(x)
 #define U(_) P(push_macro(#_))
 #define O(_) P(pop_macro(#_))
 
@@ -34,7 +31,6 @@
 #define H(f,x) N(,x) (,,f(x))
 #define SMR(f,s) U(SMR)O(SMR) N(,s)(,E,SMR)(f, E s) H(f,G(s))
 
-//#define CSVMR(f,t...) U(SMR)O(SMR) N(,t)(,E,SMR)(f, E s) H(f,G(s))
 
 #define COM_X(x),x
 
