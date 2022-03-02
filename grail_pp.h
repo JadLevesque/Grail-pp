@@ -5,7 +5,7 @@
 #define GRAIL_PP_STR(x...) GRAIL_PP_PSTR(x)
 
 #define GRAIL_PP_EAT(...)
-#define GRAIL_PP_SCAN(x...) x
+#define GRAIL_PP_SCAN(x...) GRAIL_PP_REVIVE(GRAIL_PP_SCAN) x
 #define GRAIL_PP_EMPTY
 
 #define GRAIL_PP_TUPLE_AT_0(P,a,...) P##a
