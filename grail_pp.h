@@ -59,3 +59,15 @@ GRAIL_PP_REVIVE(GRAIL_PP_MAP_ARGS_STOP) \
 f (x),GRAIL_PP_MAP_ARGS(f,args)
 
 #define GRAIL_PP_MAP_ARGS_STOP(f,x,...) f(x)
+
+
+#define GRAIL_PP_UNTIL(p,s,o,x...) p (x) (GRAIL_PP_UNTIL_,STOP,LOOP) (p,s,o,x)
+
+#define GRAIL_PP_UNTIL_LOOP(p,s,o,x...) \
+GRAIL_PP_REVIVE (GRAIL_PP_UNTIL) \
+GRAIL_PP_REVIVE (GRAIL_PP_UNTIL_LOOP) \
+o (x) \
+GRAIL_PP_SCAN (GRAIL_PP_UNTIL GRAIL_PP_EMPTY (p,s,o, s (x)))
+
+#define GRAIL_PP_UNTIL_STOP(p,s,o,x...) GRAIL_PP_REVIVE (GRAIL_PP_UNTIL_STOP) x
+
